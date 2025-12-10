@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="num">0</p>
+    <button id="inc">Increment</button>
+    <button id="deec">Decrement</button>
+    <button id="res">Reset</button>
+    <script>
+        var count=0;
+        document.getElementById('inc').addEventListener('click',()=>{
+            count+=1;
+            document.getElementById('num').innerText=count;
+        })
+        document.getElementById('deec').addEventListener('click',()=>{
+            count-=1;
+            document.getElementById('num').innerText=count;
+        })
+        document.getElementById('res').addEventListener('click',()=>{
+            count=0;
+            document.getElementById('num').innerText=count;
+        })
+    </script>
+    </body>
+</html>

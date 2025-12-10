@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Personal Information</h1>
+    <from id="form">
+    <label for="name">Name : </label>
+    <textarea type="text" id="name" name="name" placeholder="enter your name here"></textarea><br><br>
+    <label for="father">Father's Name : </label>
+    <textarea type="text" id="father" name="father" placeholder="enter your father name  here"></textarea><br><br>
+    <label for="mother">Mother's Name : </label>
+    <textarea  type="text" id="mother" name="mother" placeholder="enter your father name  here"></textarea><br><br>
+     <label for="phone">Phone Number: </label>
+    <textarea  type="tel" id="phone" name="phone" placeholder="enter your mobile number   here"></textarea><br><br>
+    <button id="submit" onclick=getresult()>submit</button>
+  </form>
+    <script>
+        const getresult=()=>{
+            var name=document.getElementById("name");
+
+        }
+    </script>
+
+</body>
+</html>
