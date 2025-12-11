@@ -1,28 +1,25 @@
-import Navbar from './components/FunctionalComponent/Navbar.jsx'
-import "./css/App.css";
-import ClassComponent from './components/ClassComponent/ClassComponent.jsx';
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Login from "./pages/Login";
-import Signin from "./pages/Signin";
-import Contact from "./pages/Contact";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/FunctionalComponent/Navbar.jsx";
+import Home from "./components/FunctionalComponent/Home.jsx";
+import About from "./components/FunctionalComponent/About.jsx";
+import Contact from "./components/FunctionalComponent/Contact.jsx";
+import LearningReact from "./components/FunctionalComponent/LearningReact.jsx";
+
+import './css/App.css';
 function App() {
-  const h1Style={
-      backgroundColor:"purple",
-      textAlign:"center",
-      color:"white"
-  }
   return (
-    <header>
+    <BrowserRouter>
       <Navbar />
-        <div>
-          <h1 style={h1Style}>Welcome to Derry</h1>
-          <h2 className="h2">This is a simple react</h2>
-          <ClassComponent />
-          <img src="vite.svg" alt="" style={{marginLeft:"550px",height:"200px"}} />
-        </div>
-    </header>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/learningReact" element={<LearningReact />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App
+
+
+export default App;

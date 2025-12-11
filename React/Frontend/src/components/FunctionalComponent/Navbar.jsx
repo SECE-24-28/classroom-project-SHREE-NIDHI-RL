@@ -1,18 +1,23 @@
-import "../../css/NavBar.css";
+//import "../../css/NavBar.css";
+import { Link } from "react-router-dom";
+import Props from "./Props.jsx";
+import Task from "./Task.jsx";
+import State from "./State.jsx";
+import Home from "./Home.jsx";
+import Events from "./Event.jsx";
 function Navbar(){
    return(
     <>
         <nav className="navbar"> 
-            <ul className="nav-list">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/login">Login</Link></li>
-          <li><Link to="/signin">Signin</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
-
+            <ul>
+          <Link to="/"><li><Home /></li></Link>
+          <Link to="/About"><li>About</li></Link>
+          <Link to="/LearningReact"><li>Learning React</li></Link>
+          <Link to="/Contact"><li>Contact</li></Link>
             </ul>
+          
         </nav>
-        <p>The above content is NavBar</p>
+        
     </>
    )
 }
