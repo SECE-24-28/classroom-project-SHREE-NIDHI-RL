@@ -1,8 +1,13 @@
 import Props from "./Props"; 
 import State from "./State";
 import Task from "./Task";       
-import Events from "./Event";   
-
+import Events from "./Event";
+import UseState from "./Hooks/UseState"; 
+import UseEffect from "./Hooks/UseEffect";  
+import UseEffectAPI from "./Hooks/UseEffectAPI";
+import UseRef from "./Hooks/UseRef";
+import FakeImageAPI from "./Hooks/FakeImageAPI";   
+import UseMemo from "./Hooks/UseMemo";
 const LearningReact = () => {
   return (
     <div>
@@ -12,9 +17,18 @@ const LearningReact = () => {
        <ol>
           <li><Props hi="Welcome Props" grade="12" age="18" img="/vite.svg"/></li>
           <li><Task item="Welcom to Task" /></li>
-          <li><State/></li>
+          <ul><li>Hooks</li></ul>
+          <ul><li><UseState /></li>
+          <li><UseEffect /></li>
+          <li><UseEffectAPI /></li>
+          <li><UseRef /></li>
+          <li><FakeImageAPI /></li>
+          <li><UseMemo /></li>
+          </ul>
+          <li><State /></li>
           <li><Events /></li>
-       
+
+          
         </ol>
       <hr />
     </div>
