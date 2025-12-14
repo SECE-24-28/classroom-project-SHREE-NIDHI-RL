@@ -5,6 +5,7 @@ import Task from "./Task.jsx";
 import State from "./State.jsx";
 import Home from "./Home.jsx";
 import Events from "./Event.jsx";
+import Login from "./Login.jsx";
 function Navbar(){
    return(
     <>
@@ -14,6 +15,7 @@ function Navbar(){
           <Link to="/About"><li>About</li></Link>
           <Link to="/LearningReact"><li>Learning React</li></Link>
           <Link to="/Contact"><li>Contact</li></Link>
+          <Link to="/Login"><li>Login</li></Link>
             </ul>
           
         </nav>

@@ -8,6 +8,7 @@ import UseEffectAPI from "./Hooks/UseEffectAPI";
 import UseRef from "./Hooks/UseRef";
 import FakeImageAPI from "./Hooks/FakeImageAPI";   
 import UseMemo from "./Hooks/UseMemo";
+import UseCallback from "./Hooks/UseCallback";  
 const LearningReact = () => {
   return (
     <div>
@@ -19,11 +20,19 @@ const LearningReact = () => {
           <li><Task item="Welcom to Task" /></li>
           <ul><li>Hooks</li></ul>
           <ul><li><UseState /></li>
+          <hr></hr>
           <li><UseEffect /></li>
+          <hr></hr>
           <li><UseEffectAPI /></li>
+          <hr></hr>
           <li><UseRef /></li>
+          <hr></hr>
           <li><FakeImageAPI /></li>
+          <hr></hr>
           <li><UseMemo /></li>
+          <hr></hr>
+          <li><UseCallback /></li>
+          <hr></hr>
           </ul>
           <li><State /></li>
           <li><Events /></li>
