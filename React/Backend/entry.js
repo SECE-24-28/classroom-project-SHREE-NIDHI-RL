@@ -1,10 +1,11 @@
 const express = require('express');
+const path = require('path');
 const mdb=require('mongoose');
 const bcrypt = require('bcrypt');
 const signup_schema = require('./models/SignupSchema');
 const { loginUser } = require('./models/Login.js');
 const app=express();
-const PORT=8001;
+const PORT=process.env.PORT || 8001;
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -71,6 +72,16 @@ app.post('/login', async (req, res) => {
     }
 })
 
+// Serve static files from Frontend build
+app.use(express.static(path.join(__dirname, '../Frontend/dist')));
+
+// Handle React routing - send all non-API requests to index.html
+app.get('*', (req, res) => {
+    if (!req.path.startsWith('/api') && !req.path.startsWith('/signup') && !req.path.startsWith('/login') && !req.path.startsWith('/json')) {
+        res.sendFile(path.join(__dirname, '../Frontend/dist/index.html'));
+    }
+});
+
 app.listen(PORT,()=>{
-    console.log('Server is running on port ${PORT}')
+    console.log(`Server is running on port ${PORT}`)
 })
