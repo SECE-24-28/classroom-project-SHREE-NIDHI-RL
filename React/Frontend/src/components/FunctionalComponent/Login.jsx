@@ -13,7 +13,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/login", formData);
+      const response = await axios.post("https://your-backend-url.onrender.com/login", formData);
       setMessage("Login successful!");
       console.log(response.data);
     } catch (error) {

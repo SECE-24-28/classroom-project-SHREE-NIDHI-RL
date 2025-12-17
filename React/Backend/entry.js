@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const mdb=require('mongoose');
 const bcrypt = require('bcrypt');
 const signup_schema = require('./models/SignupSchema');
@@ -71,16 +70,6 @@ app.post('/login', async (req, res) => {
         res.status(500).json({"Message":"Server error", "error": error.message});
     }
 })
-
-// Serve static files from Frontend build
-app.use(express.static(path.join(__dirname, '../Frontend/dist')));
-
-// Handle React routing - send all non-API requests to index.html
-app.get('*', (req, res) => {
-    if (!req.path.startsWith('/api') && !req.path.startsWith('/signup') && !req.path.startsWith('/login') && !req.path.startsWith('/json')) {
-        res.sendFile(path.join(__dirname, '../Frontend/dist/index.html'));
-    }
-});
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
