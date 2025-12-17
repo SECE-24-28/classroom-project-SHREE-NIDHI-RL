@@ -1,7 +1,14 @@
 const express = require('express');
 const mdb=require('mongoose');
+const bcrypt = require('bcrypt');
+const signup_schema = require('./models/SignupSchema');
+const { loginUser } = require('./models/Login.jsx');
 const app=express();
 const PORT=8001;
+
+// Middleware to parse JSON
+app.use(express.json());
+console.log('Attempting MongoDB connection...');
 mdb.connect('mongodb://127.0.0.1:27017/MERN').then(()=>{
     console.log("Mongodb connection successfull")
 }).catch((err)=>{
@@ -18,18 +25,40 @@ app.get('/json',(req,res)=>{
     })  
 })
 app.get('/static',(req,res)=>{
-    res.sendFile('D:/TRAINING/React/Backend/index.html')
+   res.sendFile('D:\TRAINING\React\Backend\index.html')
     })
-app.listen(PORT,()=>{
-    console.log(`Server is running on port ${PORT}`)
+
+app.get('/signup',(req, res)=>{
+    res.send("Signup page - Use POST method to submit signup data")
 })
-app.post('/signup',(req, res)=>{
+
+app.post('/signup', async (req, res)=>{
+    try {
         const{email,username,password} = req.body;
-        const newSignup = {
-        email: email,
-        username: username,
-        password: password
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new signup_schema({email, username, password: hashedPassword});
+        await newUser.save();
+        res.json({"Message":"Signup successful", "data": {email, username}});
+    } catch (error) {
+        res.status(400).json({"Message":"Signup failed", "error": error.message});
     }
-    newSignup.save
-    res.json({"Message":"Signup successfull"})
+})
+
+app.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const result = await loginUser(email, password);
+        
+        if (result.success) {
+            res.json(result);
+        } else {
+            res.status(401).json(result);
+        }
+    } catch (error) {
+        res.status(500).json({"Message":"Server error", "error": error.message});
+    }
+})
+
+app.listen(PORT,()=>{
+    console.log('Server is running on port ${PORT}')
 })
