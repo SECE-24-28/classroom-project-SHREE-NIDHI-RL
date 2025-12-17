@@ -2,14 +2,26 @@ const express = require('express');
 const mdb=require('mongoose');
 const bcrypt = require('bcrypt');
 const signup_schema = require('./models/SignupSchema');
-const { loginUser } = require('./models/Login.jsx');
+const { loginUser } = require('./models/Login.js');
 const app=express();
 const PORT=8001;
 
 // Middleware to parse JSON
 app.use(express.json());
+
+// CORS middleware to allow frontend connections
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    if (req.method === 'OPTIONS') {
+        res.sendStatus(200);
+    } else {
+        next();
+    }
+});
 console.log('Attempting MongoDB connection...');
-mdb.connect('mongodb://127.0.0.1:27017/MERN').then(()=>{
+mdb.connect('mongodb+srv://cys:cys@cluster0.2neclii.mongodb.net//MERN').then(()=>{
     console.log("Mongodb connection successfull")
 }).catch((err)=>{
     console.log("Mongodb connection unsuccessful",err)
