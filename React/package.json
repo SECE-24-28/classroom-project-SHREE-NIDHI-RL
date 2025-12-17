@@ -5,7 +5,7 @@
   "main": "Backend/entry.js",
   "scripts": {
     "start": "node Backend/entry.js",
-    "dev": "cd Backend && npm start"
+    "dev": "cd Backend && npm run dev"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",

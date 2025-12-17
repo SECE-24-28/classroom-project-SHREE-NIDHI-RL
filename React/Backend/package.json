@@ -4,7 +4,8 @@
   "description": "\"this is a backend of mern project\"",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon entry.js",
+    "start": "node entry.js",
+    "dev": "nodemon entry.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Shree",
